@@ -1,0 +1,707 @@
+:root {
+  /* Colour palette: soil, leaves and clay, on warm paper */
+  --linen: #F4EEE2;      /* page background */
+  --cream: #FBF8F1;      /* cards and fields */
+  --sage: #E0E8D6;       /* soft panels and photo placeholders */
+  --moss: #2E5A44;       /* headings, links, main actions */
+  --soil: #3A2E25;       /* body text */
+  --bark: #675747;       /* secondary text */
+  --terracotta: #9A4624; /* prices */
+  --field: #857464;      /* form and button borders */
+  --line: #D8CDB8;       /* dividers and card borders */
+
+  /* Fonts */
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+
+  /* Type scale (ratio 1.25) */
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radii */
+  --radius-control: 8px;
+  --radius-panel: 12px;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--linen);
+  color: var(--soil);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--moss);
+}
+
+h1 {
+  font-size: var(--step-3);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: var(--step-2);
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+  max-width: 65ch;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--moss);
+  transition: color 150ms ease;
+}
+
+a:hover {
+  color: var(--soil);
+}
+
+:focus-visible {
+  outline: 3px solid var(--moss);
+  outline-offset: 2px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Anchor targets stop below the sticky top bar */
+[id] {
+  scroll-margin-top: 88px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--space-2);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--moss);
+  color: var(--cream);
+  font-weight: 600;
+  border-radius: var(--radius-control);
+}
+
+.skip-link:focus {
+  left: var(--space-4);
+  color: var(--cream);
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.hint {
+  color: var(--bark);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* comfortable tap target */
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn-moss {
+  background-color: var(--moss);
+  border-color: var(--moss);
+  color: var(--cream);
+}
+
+.btn-moss:hover {
+  background-color: var(--soil);
+  border-color: var(--soil);
+  color: var(--cream);
+}
+
+.btn-cream {
+  background-color: var(--cream);
+  border-color: var(--cream);
+  color: var(--moss);
+}
+
+.btn-cream:hover {
+  background-color: var(--sage);
+  border-color: var(--sage);
+  color: var(--soil);
+}
+
+.btn-outline {
+  background-color: var(--cream);
+  border-color: var(--field);
+  color: var(--moss);
+}
+
+.btn-outline:hover {
+  background-color: var(--linen);
+  border-color: var(--moss);
+  color: var(--soil);
+}
+
+/* ---------- 1. Top bar ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--linen);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 64px;
+  padding-block: var(--space-2);
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  min-width: 0;
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.nav-menu-btn {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--cream);
+  border: 1px solid var(--field);
+  border-radius: var(--radius-control);
+  color: var(--moss);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-menu-btn::-webkit-details-marker {
+  display: none;
+}
+
+.nav-mobile-list {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  top: calc(100% + var(--space-1));
+  padding: var(--space-2);
+  background-color: var(--cream);
+  border: 1px solid var(--field);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 2px 8px rgba(58, 46, 37, 0.08);
+}
+
+.nav-mobile-list a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-mobile-list a:hover {
+  background-color: var(--sage);
+}
+
+/* ---------- Page rhythm ---------- */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-7);
+}
+
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* ---------- 2. First screen and Find us ---------- */
+.hero {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hero-subline {
+  color: var(--bark);
+}
+
+/* The one dark block on the page: hours, address, Call, Directions */
+.find-us {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4);
+  background-color: var(--moss);
+  border-radius: var(--radius-panel);
+  color: var(--cream);
+}
+
+.find-us-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.find-us-hours {
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.find-us address {
+  font-style: normal;
+}
+
+.find-us-note {
+  color: var(--sage);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.find-us-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.find-us-actions .btn {
+  flex: 1 1 160px;
+}
+
+.find-us :focus-visible {
+  outline-color: var(--cream);
+}
+
+.shop-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: 70% center; /* keep the plant shelves in view when cropped */
+  background-color: var(--sage);
+  border-radius: var(--radius-panel);
+}
+
+/* ---------- 3. What Ama sells ---------- */
+.cards-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* On a phone: small photo beside the text, so three cards stay short */
+.product-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  background-color: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.card-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--sage);
+  border-radius: var(--radius-control);
+  color: var(--bark);
+  font-size: var(--step--1);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.price {
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+/* ---------- 4. Plant care tips ---------- */
+.care-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.care-item {
+  background-color: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.care-summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 56px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-panel);
+  cursor: pointer;
+}
+
+.care-summary::-webkit-details-marker {
+  display: none;
+}
+
+.care-summary::after {
+  content: "+";
+  flex-shrink: 0;
+  color: var(--moss);
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.care-item[open] .care-summary::after {
+  content: "\2212"; /* minus sign */
+}
+
+.care-content {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+/* ---------- 5. About Ama and Ask Ama ---------- */
+.ama-panel {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4);
+  background-color: var(--sage);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.panel-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ama-photo {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  object-position: center 25%; /* keep her face centred in the circle */
+  background-color: var(--cream);
+  border: 2px solid var(--cream);
+  border-radius: 50%;
+}
+
+.panel-divider {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--field);
+}
+
+.ask-direct {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ask-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-lead {
+  font-weight: 600;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+label {
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--cream);
+  border: 1px solid var(--field);
+  border-radius: var(--radius-control);
+  color: var(--soil);
+  font: inherit;
+}
+
+textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ---------- 6. Footer ---------- */
+.site-footer {
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--line);
+  color: var(--bark);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 600;
+}
+
+/* ---------- Wider screens: same order, blocks side by side ---------- */
+@media (min-width: 768px) {
+  h1 {
+    font-size: var(--step-4);
+    line-height: 1.15;
+  }
+
+  .container {
+    padding-inline: var(--space-5);
+  }
+
+  .header-actions {
+    gap: var(--space-4);
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .nav-desktop {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .nav-desktop a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: var(--space-2);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  main {
+    gap: var(--space-8);
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-8);
+  }
+
+  .hero {
+    grid-template-columns: 1fr 1.15fr;
+    align-items: stretch;
+    gap: var(--space-6);
+  }
+
+  .shop-photo {
+    order: -1; /* photo on the left, as in the sketch */
+    height: 100%;
+    min-height: 360px;
+  }
+
+  .hero-content {
+    justify-content: center;
+    gap: var(--space-5);
+  }
+
+  .find-us {
+    padding: var(--space-5);
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .product-card {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: var(--space-4);
+  }
+
+  .card-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .ama-panel {
+    grid-template-columns: 1fr 1px 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+
+  .panel-divider {
+    width: 1px;
+    height: 100%;
+    border-top: 0;
+    border-left: 1px solid var(--field);
+  }
+
+  .form-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+}
+
+/* Respect people who have asked their device for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
