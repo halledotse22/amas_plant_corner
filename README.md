@@ -1,2 +1,2 @@
 # amas_plant_corner
-A responsive website rebuild for Ama's Plant Corner Assessment
+Lab 1: A responsive website rebuild for Ama's Plant Corner Assessment
