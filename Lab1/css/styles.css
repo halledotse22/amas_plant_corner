@@ -392,9 +392,11 @@ main {
 
 .shop-photo {
   width: 100%;
-  height: 200px;
+  height: 100%;
+  min-height: 360px;
+  max-height: 480px;
   object-fit: cover;
-  object-position: 70% center; /* keep the plant shelves in view when cropped */
+  object-position: center; /* keep the plant shelves in view when cropped */
   background-color: var(--sage);
   border-radius: var(--radius-panel);
 }
@@ -419,12 +421,11 @@ main {
 
 .card-photo {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 220px;
   object-fit: cover;
+  object-position: center;
   background-color: var(--sage);
   border-radius: var(--radius-control);
-  color: var(--bark);
-  font-size: var(--step--1);
 }
 
 .card-body {
@@ -501,10 +502,10 @@ main {
 }
 
 .ama-photo {
-  width: 112px;
-  height: 112px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  object-position: center 25%; /* keep her face centred in the circle */
+  object-position: center;
   background-color: var(--cream);
   border: 2px solid var(--cream);
   border-radius: 50%;
@@ -639,9 +640,10 @@ textarea {
   }
 
   .shop-photo {
-    order: -1; /* photo on the left, as in the sketch */
-    height: 100%;
+    order: -1; 
     min-height: 360px;
+    max-height: 480px;
+    
   }
 
   .hero-content {
@@ -666,6 +668,7 @@ textarea {
 
   .card-photo {
     aspect-ratio: 16 / 10;
+    height: 220px;
   }
 
   .ama-panel {
@@ -703,5 +706,21 @@ textarea {
 
   * {
     transition: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .shop-photo {
+    height: 240px;
+    min-height: 240px;
+  }
+
+  .card-photo {
+    height: 96px;
+  }
+
+  .ama-photo {
+    width: 120px;
+    height: 120px;
   }
 }
