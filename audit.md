@@ -25,7 +25,6 @@ Based on this, I prioritised three things:
 ### **What holds up**
 - **Page title:** The title is descriptive: "Ama's Plant Corner | Plants, pots and soil in Accra". It communicates the business and what visitors can expect.
 - **Alternative text:** All five images have descriptive alternative text explaining what they show.
-- **Colour contrast:** Every text pairing passes the 4.5:1 contrast requirement. The lowest measured contrast is 5.5:1, while body text against the page background measures 11.4:1.
 - **Keyboard navigation:** A skip link is provided, and interactive controls have visible focus outlines. Visitors can navigate the page without relying on a mouse.
 - **Tap targets:** Buttons, links and form fields are at least 48px tall, making them easier to use on touchscreens.
 - **Forms:** Every field has a visible label. The phone field uses `type="tel"` so mobile devices can display an appropriate number pad, and required fields are identified in the HTML.
