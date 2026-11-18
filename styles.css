@@ -1,5 +1,5 @@
 :root {
-  /* Colour palette: soil, leaves and clay, on warm paper */
+  /* Colour palette */
   --linen: #F4EEE2;      /* page background */
   --cream: #FBF8F1;      /* cards and fields */
   --sage: #E0E8D6;       /* soft panels and photo placeholders */
@@ -14,7 +14,7 @@
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
 
-  /* Type scale (ratio 1.25) */
+  /* Type scale */
   --step--1: 0.875rem;
   --step-0: 1rem;
   --step-1: 1.25rem;
@@ -164,7 +164,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px; /* comfortable tap target */
+  min-height: 48px; /* to be able to tap buttons comfortably */
   padding: var(--space-3) var(--space-4);
   border: 1px solid transparent;
   border-radius: var(--radius-control);
@@ -343,7 +343,7 @@ main {
   color: var(--bark);
 }
 
-/* The one dark block on the page: hours, address, Call, Directions */
+/* Hours, address, Call, Directions Section */
 .find-us {
   display: flex;
   flex-direction: column;
@@ -392,9 +392,7 @@ main {
 
 .shop-photo {
   width: 100%;
-  height: 100%;
-  min-height: 360px;
-  max-height: 480px;
+  height: 240px;
   object-fit: cover;
   object-position: center; /* keep the plant shelves in view when cropped */
   background-color: var(--sage);
@@ -410,7 +408,7 @@ main {
 /* On a phone: small photo beside the text, so three cards stay short */
 .product-card {
   display: grid;
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 96px minmax(0, 1fr);
   align-items: center;
   gap: var(--space-4);
   padding: var(--space-3);
@@ -421,7 +419,7 @@ main {
 
 .card-photo {
   width: 100%;
-  height: 220px;
+  height: 96px;
   object-fit: cover;
   object-position: center;
   background-color: var(--sage);
@@ -432,6 +430,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+}
+
+.card-body h3 {
+  overflow-wrap:anywhere;
 }
 
 .price {
@@ -502,8 +504,8 @@ main {
 }
 
 .ama-photo {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   object-position: center;
   background-color: var(--cream);
@@ -594,7 +596,7 @@ textarea {
   font-weight: 600;
 }
 
-/* ---------- Wider screens: same order, blocks side by side ---------- */
+/* ---------- Wider screens ---------- */
 @media (min-width: 768px) {
   h1 {
     font-size: var(--step-4);
@@ -641,9 +643,9 @@ textarea {
 
   .shop-photo {
     order: -1; 
+    height: 100%
     min-height: 360px;
-    max-height: 480px;
-    
+    max-height: 480px; 
   }
 
   .hero-content {
@@ -667,8 +669,12 @@ textarea {
   }
 
   .card-photo {
-    aspect-ratio: 16 / 10;
     height: 220px;
+  }
+
+  .ama-photo {
+    width: 150px;
+    height: 150px;
   }
 
   .ama-panel {
@@ -695,32 +701,5 @@ textarea {
     align-items: center;
     justify-content: space-between;
     gap: var(--space-5);
-  }
-}
-
-/* Respect people who have asked their device for less motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  * {
-    transition: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .shop-photo {
-    height: 240px;
-    min-height: 240px;
-  }
-
-  .card-photo {
-    height: 96px;
-  }
-
-  .ama-photo {
-    width: 120px;
-    height: 120px;
   }
 }
