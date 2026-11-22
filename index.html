@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Lets the phone match its browser bar and scrollbars to the page in light or dark -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#F4EEE2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1C1915" media="(prefers-color-scheme: dark)" />
     <title>Ama's Plant Corner | Plants, pots and soil in Accra</title>
     <meta
       name="description"
@@ -25,12 +29,23 @@
   <body id="top">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
+    <!-- "Dim this page": a tick box that switches the page to dark colours. -->
+    <div class="dim-switch">
+      <div class="container">
+        <label class="dim-label">
+          <input type="checkbox" id="dim-page" aria-describedby="dim-hint" />
+          Dim this page
+        </label>
+        <p id="dim-hint" class="hint">Softer colours, easier on sensitive eyes.</p>
+      </div>
+    </div>
+
     <!-- 1. Top bar: shop name and Call -->
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand-link" href="#top">Ama's Plant Corner</a>
 
- <div class="header-actions">
+        <div class="header-actions">
           <!-- On phones this list is a pop-up panel, opened by the menu icon below. On wider screens it shows in the bar. -->
           <nav id="site-menu" class="site-nav" aria-label="Main navigation">
             <a class="menu-close" href="#menu-closed">Close menu</a>
@@ -41,9 +56,10 @@
             </ul>
           </nav>
 
+          <!-- 0244 000 000 is the placeholder number from the brief. Replace it with Ama's real number before launch. -->
           <a class="btn btn-moss" href="tel:+233244000000">Call</a>
 
-     <!-- Phone menu without JavaScript: this link opens the menu by targeting #site-menu.
+          <!-- Phone menu without JavaScript: this link opens the menu by targeting #site-menu.
                Choosing a section link changes the target, so the menu closes by itself. -->
           <a class="menu-toggle" href="#site-menu" aria-controls="site-menu">
             <span class="menu-icon" aria-hidden="true"></span>
@@ -52,7 +68,6 @@
         </div>
       </div>
     </header>
-    
 
     <main id="main-content" class="container">
       <!-- 2. First screen and Find us, merged -->
@@ -86,7 +101,7 @@
 
         <img
           class="shop-photo"
-          src="./images/shop.jpg"
+          src="images/shop.jpg"
           alt="Inside Ama's Plant Corner: shelves and a table full of potted plants beside a bright window"
           width="900"
           height="491"
@@ -107,7 +122,7 @@
           <li class="product-card">
             <img
               class="card-photo"
-              src="./images/plants.jpg"
+              src="images/plants.jpg"
               alt="A snake plant, a pothos and a monstera in pots on a wooden table"
               width="900"
               height="491"
@@ -122,7 +137,7 @@
           <li class="product-card">
             <img
               class="card-photo"
-              src="./images/pots.jpg"
+              src="images/pots.jpg"
               alt="Terracotta, cream and green ceramic pots in different sizes"
               width="900"
               height="491"
@@ -137,7 +152,7 @@
           <li class="product-card">
             <img
               class="card-photo"
-              src="./images/soil.jpg"
+              src="images/soil.jpg"
               alt="A bag of potting soil with a watering can, a trowel and gardening gloves"
               width="900"
               height="491"
@@ -160,7 +175,7 @@
 
         <div class="care-list">
           <details class="care-item" name="care-guide">
-            <summary class="care-summary"><h3>Houseplants</h3></summary>
+            <summary class="care-summary"><span class="care-title">Houseplants</span></summary>
             <p class="care-content">
               Most houseplants prefer indirect sunlight and do well near a window that does not get
               direct afternoon sun. Water when the top inch of soil feels dry, usually every 5 to 7
@@ -169,7 +184,7 @@
           </details>
 
           <details class="care-item" name="care-guide">
-            <summary class="care-summary"><h3>Succulents &amp; Cacti</h3></summary>
+            <summary class="care-summary"><span class="care-title">Succulents &amp; Cacti</span></summary>
             <p class="care-content">
               Succulents and cacti store water in their leaves and stems, so they need very little
               watering. Water deeply once every two to three weeks and let the soil dry out
@@ -178,7 +193,7 @@
           </details>
 
           <details class="care-item" name="care-guide">
-            <summary class="care-summary"><h3>Tropical Plants</h3></summary>
+            <summary class="care-summary"><span class="care-title">Tropical Plants</span></summary>
             <p class="care-content">
               Tropical plants like high humidity and warm temperatures. Mist the leaves regularly or
               place a tray of water near the plant to keep moisture in the air. Keep away from cold
@@ -187,7 +202,7 @@
           </details>
 
           <details class="care-item" name="care-guide">
-            <summary class="care-summary"><h3>Outdoor Plants</h3></summary>
+            <summary class="care-summary"><span class="care-title">Outdoor Plants</span></summary>
             <p class="care-content">
               Outdoor plants need regular watering, especially in the dry season. Water in the early
               morning or late evening to reduce evaporation. Feed with a general-purpose fertiliser
@@ -237,7 +252,7 @@
     </main>
 
     <!-- 6. Slim footer -->
-   <footer class="site-footer">
+    <footer class="site-footer">
       <div class="container footer-inner">
         <p>14 Okaishie Lane, Accra</p>
         <p>&copy; 2026 Ama's Plant Corner. All rights reserved.</p>
