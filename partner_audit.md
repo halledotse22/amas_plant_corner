@@ -93,18 +93,7 @@ In order, the problems to fix are: the WhatsApp button covering content, content
 - **Found by:** keyboard testing of the main form journey.
 - **Why it ranks here:** it affects every form user, which is why it ranks above finding 6, but Call and WhatsApp still work, so customers can reach Ama another way.
 
-### 6. The Facebook and Instagram links go nowhere
-
-- **Where:** Find Us, "Follow us: Facebook . Instagram".
-- **What happens:** pressing Enter on either link does nothing useful; no Facebook or Instagram page opens.
-- **How to reproduce:** Tab to Facebook and press Enter.
-- **Evidence:** both use `href="#"`. In DevTools they measure 67 × 21px (Facebook) and 71 × 21px (Instagram). They sit inside a line of text, so WCAG's inline exception to 2.5.8 Target Size (Minimum) applies, and Lighthouse passed "Touch targets have sufficient size and spacing". They are still small for a thumb.
-- **Principle and criterion:** Operable. No WCAG failure confirmed; recorded as a functional problem.
-- **Who it affects and how:** anyone who wants to follow Ama online. The links look and sound like working links, so people try them and are left wondering whether something went wrong.
-- **Found by:** keyboard testing.
-- **Why it ranks here:** it is optional and affects few visitors, and the main content is unaffected. It ranks above finding 7 because people who tap these links see them fail, while the missing autocomplete attributes in finding 7 caused no visible problem in the browsers I tested.
-
-### 7. Keyboard users must pass the whole menu first, and the WhatsApp button sits outside every landmark
+### 6. Keyboard users must pass the whole menu first, and the WhatsApp button sits outside every landmark
 
 - **Where:** the header, and the WhatsApp button after the footer.
 - **What happens:** there is no skip link, so a keyboard user presses Tab a few times before reaching the content. The WhatsApp button sits after the footer, outside `main` and `footer`, so someone moving between landmarks with a screen reader will not come across it.
@@ -113,6 +102,18 @@ In order, the problems to fix are: the WhatsApp button covering content, content
 - **Who it affects and how:** keyboard users, a little extra effort on every visit.
 - **Found by:** keyboard testing and WAVE's Structure and Order tabs. Lighthouse did not flag the missing skip link; it marked "Skip links are focusable" as not applicable.
 - **Why it ranks here:** it is not a failure, and the cost is a few extra key presses.
+
+### 7. The Facebook and Instagram links go nowhere
+
+- **Where:** Find Us, "Follow us: Facebook . Instagram".
+- **What happens:** pressing Enter on either link does nothing useful; no Facebook or Instagram page opens.
+- **How to reproduce:** Tab to Facebook and press Enter.
+- **Evidence:** both use `href="#"`. In DevTools they measure 67 × 21px (Facebook) and 71 × 21px (Instagram). They sit inside a line of text, so WCAG's inline exception to 2.5.8 Target Size (Minimum) applies, and Lighthouse passed "Touch targets have sufficient size and spacing". They are still small for a thumb.
+- **Principle and criterion:** Operable. No WCAG failure confirmed; recorded as a functional problem.
+- **Who it affects and how:** anyone who wants to follow Ama online. The links look and sound like working links, so people try them and are left wondering whether something went wrong.
+- **Found by:** keyboard testing.
+- **Why it ranks here: ** it is optional and affects few visitors, and the main content is unaffected.
+
 
 ## What works well
 
