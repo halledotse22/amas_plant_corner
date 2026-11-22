@@ -10,6 +10,14 @@
   --field: #857464;      /* button and panel borders */
   --line: #D8CDB8;       /* dividers and card borders */
 
+  /* Colours for filled actions: buttons, skip link and the Find us card.
+     In light mode they are the same moss and cream as before; dark mode and the Dim switch change them. */
+  --action: var(--moss);
+  --on-action: var(--cream);
+  --on-action-muted: var(--sage);
+  --action-hover: var(--soil);
+  --on-action-hover: var(--cream);
+
   /* Fonts */
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
@@ -138,15 +146,15 @@ img {
   top: var(--space-2);
   z-index: 100;
   padding: var(--space-3) var(--space-4);
-  background-color: var(--moss);
-  color: var(--cream);
+  background-color: var(--action);
+  color: var(--on-action);
   font-weight: 600;
   border-radius: var(--radius-control);
 }
 
 .skip-link:focus {
   left: var(--space-4);
-  color: var(--cream);
+  color: var(--on-action);
 }
 
 .container {
@@ -182,15 +190,15 @@ img {
 }
 
 .btn-moss {
-  background-color: var(--moss);
-  border-color: var(--moss);
-  color: var(--cream);
+  background-color: var(--action);
+  border-color: var(--action);
+  color: var(--on-action);
 }
 
 .btn-moss:hover {
-  background-color: var(--soil);
-  border-color: var(--soil);
-  color: var(--cream);
+  background-color: var(--action-hover);
+  border-color: var(--action-hover);
+  color: var(--on-action-hover);
 }
 
 .btn-cream {
@@ -369,9 +377,9 @@ main {
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-5) var(--space-4);
-  background-color: var(--moss);
+  background-color: var(--action);
   border-radius: var(--radius-panel);
-  color: var(--cream);
+  color: var(--on-action);
 }
 
 .find-us-text {
@@ -391,7 +399,7 @@ main {
 }
 
 .find-us-note {
-  color: var(--sage);
+  color: var(--on-action-muted);
   font-size: var(--step--1);
   line-height: 1.5;
 }
@@ -407,7 +415,7 @@ main {
 }
 
 .find-us :focus-visible {
-  outline-color: var(--cream);
+  outline-color: var(--on-action);
 }
 
 .shop-photo {
@@ -626,7 +634,7 @@ main {
   }
 
   .shop-photo {
-    order: -1; /* photo on the left, as in the sketch */
+    order: -1; 
     aspect-ratio: auto;
     height: 100%;
     min-height: 360px;
@@ -685,21 +693,102 @@ main {
   }
 }
 
-/* ---------- High contrast mode (Windows contrast themes) ----------
-   These themes replace the page's colours with a few system colours and remove
-   backgrounds and shadows. That hid the menu icon (drawn with a background and
-   shadows) and the edges of the Find us card (which relied on its green fill). */
-@media (forced-colors: active) {
-  /* Keep the three lines, drawn in the theme's link colour so they always show */
-  .menu-icon {
-    forced-color-adjust: none;
-    background-color: LinkText;
-    box-shadow: 0 -6px 0 LinkText, 0 6px 0 LinkText;
+/* ---------- Dark colours: used by the phone's dark mode and by the "Dim this page" switch ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --linen: #1C1915;
+    --cream: #27221C;
+    --sage: #2B3428;
+    --moss: #A9D6BC;
+    --soil: #E6E0D4;
+    --bark: #CFC4B4;
+    --terracotta: #F2A584;
+    --field: #968675;
+    --line: #3A332A;
+
+    --action: #204A37;          /* deep green, so buttons and the Find us card are not bright blocks */
+    --on-action: #EEE9DE;
+    --on-action-muted: #D5E5DA;
+    --action-hover: var(--moss);
+    --on-action-hover: #1C1915;
   }
 
-  /* Give blocks that relied on a background fill a visible edge */
-  .find-us,
-  .ama-panel {
-    border: 2px solid CanvasText;
+  img {
+    filter: brightness(0.88); /* photos a little dimmer, so they do not glare against the dark page */
+  }
+
+  .btn-cream,
+  .btn-cream:hover {
+    border-color: var(--moss); /* the cream buttons are dark here, so they get a light edge on the green card */
+  }
+}
+
+/* ---------- "Dim this page" switch ----------
+   A tick box at the top that switches the page to the same dark colours, for people whose phone is
+   not set to dark mode, or who do not know it can be. It works with no JavaScript: the page reacts to the
+   box with :has(). It is shown only where it can work: in browsers that understand :has(), and only
+   when the phone is not already in dark mode. It does not remember the choice after a reload. */
+.dim-switch {
+  display: none;
+}
+
+@supports selector(:has(*)) {
+  @media (prefers-color-scheme: light) {
+    .dim-switch {
+      display: block;
+      padding-block: var(--space-2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dim-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-height: 48px; /* a full-size tap target for the whole row */
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .dim-label input {
+      flex-shrink: 0;
+      width: 1.5rem; /* in rem, so the box grows with the text size */
+      height: 1.5rem;
+      margin: 0;
+      accent-color: var(--moss);
+      cursor: pointer;
+    }
+
+    .dim-switch .hint {
+      padding-left: calc(1.5rem + var(--space-3)); /* lines up under the label text */
+    }
+
+    :root:has(#dim-page:checked) {
+      color-scheme: dark;
+      --linen: #1C1915;
+      --cream: #27221C;
+      --sage: #2B3428;
+      --moss: #A9D6BC;
+      --soil: #E6E0D4;
+      --bark: #CFC4B4;
+      --terracotta: #F2A584;
+      --field: #968675;
+      --line: #3A332A;
+
+      --action: #204A37;
+      --on-action: #EEE9DE;
+      --on-action-muted: #D5E5DA;
+      --action-hover: var(--moss);
+      --on-action-hover: #1C1915;
+    }
+
+    :root:has(#dim-page:checked) img {
+      filter: brightness(0.88);
+    }
+
+    :root:has(#dim-page:checked) .btn-cream,
+    :root:has(#dim-page:checked) .btn-cream:hover {
+      border-color: var(--moss);
+    }
   }
 }
