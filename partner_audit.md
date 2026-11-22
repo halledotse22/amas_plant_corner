@@ -3,7 +3,6 @@
 - Site audited: [https://johnsonwalker-cmd.github.io/ama_plant_corner/](https://johnsonwalker-cmd.github.io/ama_plant_corner/)
 - Date and time tested: 20th November, 2026
 - Audited by: Halle Akosua Asantewaa Dotse
-- Standard: WCAG 2.2, level AA
 
 ## How I tested
 
