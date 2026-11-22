@@ -25,33 +25,34 @@
   <body id="top">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- 1. Top bar: shop name and Call, always within reach -->
+    <!-- 1. Top bar: shop name and Call -->
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand-link" href="#top">Ama's Plant Corner</a>
 
-        <div class="header-actions">
-          <nav aria-label="Main navigation">
-            <ul class="nav-desktop">
+ <div class="header-actions">
+          <!-- On phones this list is a pop-up panel, opened by the menu icon below. On wider screens it shows in the bar. -->
+          <nav id="site-menu" class="site-nav" aria-label="Main navigation">
+            <a class="menu-close" href="#menu-closed">Close menu</a>
+            <ul class="nav-list">
               <li><a href="#what-we-sell">Shop</a></li>
               <li><a href="#plant-care-tips">Care tips</a></li>
               <li><a href="#ask-ama">Ask Ama</a></li>
             </ul>
-
-            <details class="nav-mobile">
-              <summary class="nav-menu-btn">Menu</summary>
-              <ul class="nav-mobile-list">
-                <li><a href="#what-we-sell">Shop</a></li>
-                <li><a href="#plant-care-tips">Care tips</a></li>
-                <li><a href="#ask-ama">Ask Ama</a></li>
-              </ul>
-            </details>
           </nav>
 
           <a class="btn btn-moss" href="tel:+233244000000">Call</a>
+
+     <!-- Phone menu without JavaScript: this link opens the menu by targeting #site-menu.
+               Choosing a section link changes the target, so the menu closes by itself. -->
+          <a class="menu-toggle" href="#site-menu" aria-controls="site-menu">
+            <span class="menu-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Menu</span>
+          </a>
         </div>
       </div>
     </header>
+    
 
     <main id="main-content" class="container">
       <!-- 2. First screen and Find us, merged -->
@@ -202,78 +203,43 @@
           <h2 id="about-heading">About Ama</h2>
           <img
             class="ama-photo"
-            src="./images/ama.jpg"
+            src="images/ama.jpg"
             alt="Ama, smiling in a green apron, with plants behind her"
             width="900"
             height="491"
             loading="lazy"
           />
           <p>
-            Ama has been running her plant shop in the neighborhood for over 5 years now. She loves
+            Ama has been running her plant shop in the neighbourhood for over 5 years now. She loves
             plants and wants to help everyone keep their plants alive and thriving. If you are not
             sure what plant is right for you, just ask her!
           </p>
         </section>
 
-        <hr class="panel-divider" />
-
-        <section id="ask-ama" class="panel-block" aria-labelledby="ask-heading">
+        <section id="ask-ama" class="panel-block ask-block" aria-labelledby="ask-heading">
           <h2 id="ask-heading">Ask Ama</h2>
           <p>Ask anything. No question is too small.</p>
 
           <!-- Additional improvement: a WhatsApp link, so a question (and a photo) reaches Ama directly -->
-          <div class="ask-direct">
+          <div class="ask-actions">
             <a
               class="btn btn-moss"
               href="https://wa.me/233244000000?text=Hello%20Ama%2C%20I%20have%20a%20plant%20question."
               target="_blank"
               rel="noopener noreferrer"
+              aria-describedby="whatsapp-hint"
             >Chat with Ama on WhatsApp</a>
-            <p class="hint">You can send a photo of your plant too.</p>
+            <p id="whatsapp-hint" class="hint">You can send a photo of your plant too.</p>
+            <a class="btn btn-outline" href="tel:+233244000000">Or call Ama on 0244 000 000</a>
           </div>
-
-          <form class="ask-form" action="#ask-ama" method="get">
-            <p class="form-lead">Or leave your question here:</p>
-
-            <div class="field-group">
-              <label for="visitor-name">Your name</label>
-              <input id="visitor-name" name="name" type="text" autocomplete="name" required />
-            </div>
-
-            <div class="field-group">
-              <label for="visitor-phone">Phone number</label>
-              <input
-                id="visitor-phone"
-                name="phone"
-                type="tel"
-                autocomplete="tel"
-                aria-describedby="phone-hint"
-                required
-              />
-              <p id="phone-hint" class="hint">So Ama can reply to you.</p>
-            </div>
-
-            <div class="field-group">
-              <label for="plant-question">Your question</label>
-              <textarea id="plant-question" name="question" rows="4" required></textarea>
-            </div>
-
-            <div class="form-actions">
-              <button class="btn btn-outline" type="submit">Send question</button>
-              <a class="btn btn-outline" href="tel:+233244000000">Or call Ama</a>
-            </div>
-          </form>
         </section>
       </div>
     </main>
 
     <!-- 6. Slim footer -->
-    <footer class="site-footer">
+   <footer class="site-footer">
       <div class="container footer-inner">
-        <ul class="footer-links">
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-        </ul>
+        <p>14 Okaishie Lane, Accra</p>
         <p>&copy; 2026 Ama's Plant Corner. All rights reserved.</p>
       </div>
     </footer>
