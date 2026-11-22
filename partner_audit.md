@@ -104,23 +104,10 @@ In order, the problems to fix are: the WhatsApp button covering content, content
 - **Found by:** keyboard testing.
 - **Why it ranks here:** it is optional and affects few visitors, and the main content is unaffected. It ranks above finding 7 because people who tap these links see them fail, while the missing autocomplete attributes in finding 7 caused no visible problem in the browsers I tested.
 
-### 7. The name and phone fields do not state what they are for in the code
-
-- **Where:** "Enter your name" (Ask Ama), and "Full name" and "Phone Number" (Get In Touch).
-- **What happens:** the fields do not declare that they ask for a name and a phone number. Browsers have to guess. Both browsers I tested guessed correctly: Microsoft Edge on Windows and Chrome on a MacBook offered to fill in the name and phone number on Get In Touch. Assistive tools that help people fill in forms read the declared purpose, not a browser's guess, and other browsers may not guess.
-- **How to reproduce:**
-  1. Open DevTools, inspect the Full name field and look at its attributes.
-  2. There is `id`, `name`, `type` and `required`, but no `autocomplete`. The same is true of the Phone Number and Enter your name fields.
-- **Evidence:** none of the three fields has an `autocomplete` attribute (`autocomplete="name"` and `autocomplete="tel"` are missing). In Edge and in Chrome on the MacBook, autofill still filled Full name and Phone Number on Get In Touch, most likely guessed from `name="fullName"` and `name="phone"`. The message field was not filled, which is expected: free text has no autofill value. I did not test Safari or Firefox.
-- **Principle and criterion:** Perceivable; 1.3.5 Identify Input Purpose (AA). The criterion asks for the purpose to be stated in the code so that browsers and assistive tools can rely on it, not guess it.
-- **Who it affects and how:** people with motor difficulties or tremors, people with memory or cognitive disabilities who find it hard to recall or type details, and older customers on small phone keyboards. Where the browser guesses correctly, as Edge and Chrome did, nothing is lost; where it does not, or where a tool relies on the declared purpose, they have to type every detail by hand.
-- **Found by:** reading the code and inspecting the fields in DevTools, then testing autofill in Edge and Chrome. Lighthouse marked "autocomplete attributes are used correctly" as not applicable: it checks only `autocomplete` values that exist, so it cannot notice they are missing.
-- **Why it ranks here:** it is a real AA failure, but in both browsers I tested people still got autofill, so it causes almost no difficulty today. I rank it below finding 6 because the social links visibly fail when tapped, whereas this one only matters if a browser or tool cannot guess. The fix is two attributes.
-
-### 8. Keyboard users must pass the whole menu first, and the WhatsApp button sits outside every landmark
+### 7. Keyboard users must pass the whole menu first, and the WhatsApp button sits outside every landmark
 
 - **Where:** the header, and the WhatsApp button after the footer.
-- **What happens:** there is no skip link, so a keyboard user presses Tab five times before reaching the content. The WhatsApp button sits after the footer, outside `main` and `footer`, so someone moving between landmarks with a screen reader will not come across it.
+- **What happens:** there is no skip link, so a keyboard user presses Tab a few times before reaching the content. The WhatsApp button sits after the footer, outside `main` and `footer`, so someone moving between landmarks with a screen reader will not come across it.
 - **Evidence:** the first Tab stop is "Ama's Plant Corner"; there is no skip link. WAVE's Structure tab lists Header (with Navigation), Main and Footer, and the WhatsApp link is inside none of them; its Order tab lists it as the 21st and last focusable item.
 - **Principle and criterion:** Operable; 2.4.1 Bypass Blocks (A). This criterion is met, because the landmarks and headings let screen reader users skip ahead. I record this as best practice.
 - **Who it affects and how:** keyboard users, a little extra effort on every visit.
