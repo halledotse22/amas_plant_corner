@@ -7,7 +7,7 @@
   --soil: #3A2E25;       /* body text */
   --bark: #675747;       /* secondary text */
   --terracotta: #9A4624; /* prices */
-  --field: #857464;      /* form and button borders */
+  --field: #857464;      /* button and panel borders */
   --line: #D8CDB8;       /* dividers and card borders */
 
   /* Fonts */
@@ -112,9 +112,12 @@ img {
   height: auto;
 }
 
-/* Anchor targets stop below the sticky top bar */
-[id] {
-  scroll-margin-top: 88px;
+/* Sections the menu and skip link jump to stop below the sticky top bar */
+#main-content,
+#what-we-sell,
+#plant-care-tips,
+#ask-ama {
+  scroll-margin-top: 6rem; /* in rem, so the gap grows with the text size, like the header does */
 }
 
 .visually-hidden {
@@ -224,8 +227,8 @@ img {
 }
 
 .header-inner {
-  position: relative;
   display: flex;
+  flex-wrap: wrap; /* at large text sizes the buttons drop below the name instead of overlapping it */
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
@@ -236,8 +239,8 @@ img {
 .brand-link {
   display: inline-flex;
   align-items: center;
+  flex: 1 1 6rem;
   min-height: 48px;
-  min-width: 0;
   font-family: var(--font-heading);
   font-size: var(--step-1);
   font-weight: 600;
@@ -252,33 +255,38 @@ img {
   flex-shrink: 0;
 }
 
-.nav-desktop {
-  display: none;
-}
-
-.nav-menu-btn {
-  list-style: none;
+/* Phone menu: a hamburger link opens the list; picking a section closes it */
+.menu-toggle {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  padding: var(--space-2) var(--space-3);
+  justify-content: center;
+  width: 48px; /* icon only, but still a full-size tap target */
+  height: 48px;
   background-color: var(--cream);
   border: 1px solid var(--field);
   border-radius: var(--radius-control);
   color: var(--moss);
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.nav-menu-btn::-webkit-details-marker {
+/* Three lines drawn with CSS: the middle bar and two shadows */
+.menu-icon {
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+}
+
+.site-nav {
   display: none;
-}
-
-.nav-mobile-list {
-  position: absolute;
+  position: fixed; /* a fixed panel opens without scrolling the page */
+  top: var(--space-2);
   left: var(--space-4);
   right: var(--space-4);
-  top: calc(100% + var(--space-1));
+  max-height: calc(100vh - var(--space-4));
+  overflow-y: auto;
+  z-index: 60;
   padding: var(--space-2);
   background-color: var(--cream);
   border: 1px solid var(--field);
@@ -286,7 +294,12 @@ img {
   box-shadow: 0 2px 8px rgba(58, 46, 37, 0.08);
 }
 
-.nav-mobile-list a {
+.site-nav:target {
+  display: block;
+}
+
+.nav-list a,
+.menu-close {
   display: flex;
   align-items: center;
   min-height: 48px;
@@ -296,8 +309,15 @@ img {
   text-decoration: none;
 }
 
-.nav-mobile-list a:hover {
+.nav-list a:hover,
+.menu-close:hover {
   background-color: var(--sage);
+}
+
+.menu-close {
+  justify-content: flex-end;
+  margin-bottom: var(--space-1);
+  color: var(--bark);
 }
 
 /* ---------- Page rhythm ---------- */
@@ -392,7 +412,8 @@ main {
 
 .shop-photo {
   width: 100%;
-  height: 240px;
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
   object-position: center;
   background-color: var(--sage);
@@ -483,6 +504,14 @@ main {
   content: "\2212"; /* minus sign */
 }
 
+.care-title {
+  font-family: var(--font-heading);
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--moss);
+}
+
 .care-content {
   padding: 0 var(--space-4) var(--space-4);
 }
@@ -513,59 +542,16 @@ main {
   border-radius: 50%;
 }
 
-.panel-divider {
-  width: 100%;
-  margin: 0;
-  border: 0;
+/* On phones a line above Ask Ama separates it from About Ama */
+.ask-block {
+  padding-top: var(--space-5);
   border-top: 1px solid var(--field);
 }
 
-.ask-direct {
+.ask-actions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-}
-
-.ask-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.form-lead {
-  font-weight: 600;
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-textarea {
-  width: 100%;
-  min-height: 48px;
-  padding: var(--space-3) var(--space-4);
-  background-color: var(--cream);
-  border: 1px solid var(--field);
-  border-radius: var(--radius-control);
-  color: var(--soil);
-  font: inherit;
-}
-
-textarea {
-  min-height: 112px;
-  resize: vertical;
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-3);
 }
 
@@ -584,18 +570,6 @@ textarea {
   gap: var(--space-2);
 }
 
-.footer-links {
-  display: flex;
-  gap: var(--space-5);
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 48px;
-  font-weight: 600;
-}
-
 /* ---------- Wider screens ---------- */
 @media (min-width: 768px) {
   h1 {
@@ -611,22 +585,32 @@ textarea {
     gap: var(--space-4);
   }
 
-  .nav-mobile {
+  .menu-toggle,
+  .menu-close {
     display: none;
   }
 
-  .nav-desktop {
+  .site-nav,
+  .site-nav:target {
+    display: block;
+    position: static;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .nav-list {
     display: flex;
     gap: var(--space-4);
   }
 
-  .nav-desktop a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 48px;
+  .nav-list a {
     padding-inline: var(--space-2);
-    font-weight: 600;
-    text-decoration: none;
+  }
+
+  .nav-list a:hover {
+    background-color: transparent;
   }
 
   main {
@@ -643,9 +627,10 @@ textarea {
 
   .shop-photo {
     order: -1; 
-    height: 100%
+    aspect-ratio: auto;
+    height: 100%;
     min-height: 360px;
-    max-height: 480px; 
+    max-height: 480px;
   }
 
   .hero-content {
@@ -678,21 +663,17 @@ textarea {
   }
 
   .ama-panel {
-    grid-template-columns: 1fr 1px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-6);
     padding: var(--space-6);
   }
 
-  .panel-divider {
-    width: 1px;
-    height: 100%;
+  /* Side by side, the line moves to the left edge of Ask Ama */
+  .ask-block {
+    padding-top: 0;
+    padding-left: var(--space-6);
     border-top: 0;
     border-left: 1px solid var(--field);
-  }
-
-  .form-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 
   .footer-inner {
@@ -701,5 +682,24 @@ textarea {
     align-items: center;
     justify-content: space-between;
     gap: var(--space-5);
+  }
+}
+
+/* ---------- High contrast mode (Windows contrast themes) ----------
+   These themes replace the page's colours with a few system colours and remove
+   backgrounds and shadows. That hid the menu icon (drawn with a background and
+   shadows) and the edges of the Find us card (which relied on its green fill). */
+@media (forced-colors: active) {
+  /* Keep the three lines, drawn in the theme's link colour so they always show */
+  .menu-icon {
+    forced-color-adjust: none;
+    background-color: LinkText;
+    box-shadow: 0 -6px 0 LinkText, 0 6px 0 LinkText;
+  }
+
+  /* Give blocks that relied on a background fill a visible edge */
+  .find-us,
+  .ama-panel {
+    border: 2px solid CanvasText;
   }
 }
