@@ -3,7 +3,16 @@ name: Website CI
 
 on:
   push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'bugfix/**'
+
   pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   validate:
@@ -18,7 +27,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Check HTML, CSS and JavaScript
+      - name: Check HTML, CSS and JavaScript formatting
         run: npx --yes prettier --check "**/*.{html,css,js}"
 
       - name: Validate HTML
