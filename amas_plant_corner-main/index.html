@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en-GH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Lets the phone match its browser bar and scrollbars to the page in light or dark -->
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#F4EEE2"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1C1915"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Ama's Plant Corner | Plants, pots and soil in Accra</title>
+    <meta
+      name="description"
+      content="Houseplants, pots, soil and friendly plant care advice at 14 Okaishie Lane, Accra. Open Monday to Saturday, 8am to 6pm."
+    />
+    <meta
+      property="og:title"
+      content="Ama's Plant Corner | Plants, pots and soil in Accra"
+    />
+    <meta
+      property="og:description"
+      content="Houseplants, pots, soil and friendly plant care advice at 14 Okaishie Lane, Accra."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Nunito+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- "Dim this page": a tick box that switches the page to dark colours. -->
+    <aside class="dim-switch" aria-label="Display options">
+      <div class="container">
+        <label class="dim-label">
+          <input type="checkbox" id="dim-page" aria-describedby="dim-hint" />
+          Dim this page
+        </label>
+        <p id="dim-hint" class="hint">
+          Softer colours, easier on sensitive eyes.
+        </p>
+      </div>
+    </aside>
+
+    <!-- 1. Top bar: shop name and Call -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand-link" href="#top">Ama's Plant Corner</a>
+
+        <div class="header-actions">
+          <!-- On phones this list is a pop-up panel, opened by the menu icon below. On wider screens it shows in the bar. -->
+          <nav id="site-menu" class="site-nav" aria-label="Main navigation">
+            <a class="menu-close" href="#menu-closed">Close menu</a>
+            <ul class="nav-list">
+              <li><a href="#what-we-sell">Shop</a></li>
+              <li><a href="#plant-care-tips">Care tips</a></li>
+              <li><a href="#ask-ama">Ask Ama</a></li>
+            </ul>
+          </nav>
+
+          <!-- 0244 000 000 is the placeholder number from the brief. Replace it with Ama's real number before launch. -->
+          <a class="btn btn-moss" href="tel:+233244000000">Call</a>
+
+          <!-- Phone menu without JavaScript: this link opens the menu by targeting #site-menu.
+               Choosing a section link changes the target, so the menu closes by itself. -->
+          <a class="menu-toggle" href="#site-menu" aria-controls="site-menu">
+            <span class="menu-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Menu</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="container">
+      <!-- 2. First screen and Find us, merged -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <div class="hero-header">
+            <h1 id="hero-heading">A calm corner for plants in Accra</h1>
+            <p class="hero-subline">
+              Houseplants, pots and soil, with friendly advice for first-time
+              plant owners.
+            </p>
+          </div>
+
+          <section
+            id="find-us"
+            class="find-us"
+            aria-labelledby="find-us-heading"
+          >
+            <h2 id="find-us-heading" class="visually-hidden">Find us</h2>
+            <div class="find-us-text">
+              <p class="find-us-hours">Open Monday to Saturday, 8am to 6pm</p>
+              <address>14 Okaishie Lane, Accra</address>
+              <p class="find-us-note">Closed on Sundays</p>
+            </div>
+            <div class="find-us-actions">
+              <a class="btn btn-cream" href="tel:+233244000000"
+                >Call 0244 000 000</a
+              >
+              <a
+                class="btn btn-cream"
+                href="https://www.google.com/maps/search/?api=1&amp;query=14+Okaishie+Lane+Accra+Ghana"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Get directions</a
+              >
+            </div>
+          </section>
+        </div>
+
+        <img
+          class="shop-photo"
+          src="images/shop.jpg"
+          alt="Inside Ama's Plant Corner: shelves and a table full of potted plants beside a bright window"
+          width="900"
+          height="491"
+        />
+      </section>
+
+      <!-- 3. What Ama sells -->
+      <section
+        id="what-we-sell"
+        class="section-stack"
+        aria-labelledby="shop-heading"
+      >
+        <div class="section-intro">
+          <h2 id="shop-heading">What Ama sells</h2>
+          <p>
+            Plants for your home and office, and everything they need to settle
+            in. Whether this is your first plant or your fiftieth, there is
+            something here for you.
+          </p>
+        </div>
+
+        <ul class="cards-grid">
+          <li class="product-card">
+            <img
+              class="card-photo"
+              src="images/plants.jpg"
+              alt="A snake plant, a pothos and a monstera in pots on a wooden table"
+              width="900"
+              height="491"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h3>Houseplants</h3>
+              <p class="price">From GH&#x20B5; 25</p>
+            </div>
+          </li>
+
+          <li class="product-card">
+            <img
+              class="card-photo"
+              src="images/pots.jpg"
+              alt="Terracotta, cream and green ceramic pots in different sizes"
+              width="900"
+              height="491"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h3>Pots &amp; Planters</h3>
+              <p class="price">From GH&#x20B5; 15</p>
+            </div>
+          </li>
+
+          <li class="product-card">
+            <img
+              class="card-photo"
+              src="images/soil.jpg"
+              alt="A bag of potting soil with a watering can, a trowel and gardening gloves"
+              width="900"
+              height="491"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h3>Soil &amp; Accessories</h3>
+              <p class="price">From GH&#x20B5; 10</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. Plant care tips: opens one guide at a time, no JavaScript -->
+      <section
+        id="plant-care-tips"
+        class="section-stack"
+        aria-labelledby="care-heading"
+      >
+        <div class="section-intro">
+          <h2 id="care-heading">Plant care tips</h2>
+          <p>Tap a topic to read Ama's care guide for that type of plant.</p>
+        </div>
+
+        <div class="care-list">
+          <details class="care-item" name="care-guide">
+            <summary class="care-summary">
+              <span class="care-title">Houseplants</span>
+            </summary>
+            <p class="care-content">
+              Most houseplants prefer indirect sunlight and do well near a
+              window that does not get direct afternoon sun. Water when the top
+              inch of soil feels dry, usually every 5 to 7 days. Avoid leaving
+              them in standing water as this causes root rot.
+            </p>
+          </details>
+
+          <details class="care-item" name="care-guide">
+            <summary class="care-summary">
+              <span class="care-title">Succulents &amp; Cacti</span>
+            </summary>
+            <p class="care-content">
+              Succulents and cacti store water in their leaves and stems, so
+              they need very little watering. Water deeply once every two to
+              three weeks and let the soil dry out completely between waterings.
+              They love bright, direct sunlight.
+            </p>
+          </details>
+
+          <details class="care-item" name="care-guide">
+            <summary class="care-summary">
+              <span class="care-title">Tropical Plants</span>
+            </summary>
+            <p class="care-content">
+              Tropical plants like high humidity and warm temperatures. Mist the
+              leaves regularly or place a tray of water near the plant to keep
+              moisture in the air. Keep away from cold drafts and air
+              conditioning vents.
+            </p>
+          </details>
+
+          <details class="care-item" name="care-guide">
+            <summary class="care-summary">
+              <span class="care-title">Outdoor Plants</span>
+            </summary>
+            <p class="care-content">
+              Outdoor plants need regular watering, especially in the dry
+              season. Water in the early morning or late evening to reduce
+              evaporation. Feed with a general-purpose fertiliser every four to
+              six weeks during the growing season.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- 5. About Ama and Ask Ama, together -->
+      <div class="ama-panel">
+        <section class="panel-block" aria-labelledby="about-heading">
+          <h2 id="about-heading">About Ama</h2>
+          <img
+            class="ama-photo"
+            src="images/ama.jpg"
+            alt="Ama, smiling in a green apron, with plants behind her"
+            width="900"
+            height="491"
+            loading="lazy"
+          />
+          <p>
+            Ama has been running her plant shop in the neighbourhood for over 5
+            years now. She loves plants and wants to help everyone keep their
+            plants alive and thriving. If you are not sure what plant is right
+            for you, just ask her!
+          </p>
+        </section>
+
+        <section
+          id="ask-ama"
+          class="panel-block ask-block"
+          aria-labelledby="ask-heading"
+        >
+          <h2 id="ask-heading">Ask Ama</h2>
+          <p>Ask anything. No question is too small.</p>
+
+          <!-- Additional improvement: a WhatsApp link, so a question (and a photo) reaches Ama directly -->
+          <div class="ask-actions">
+            <a
+              class="btn btn-moss"
+              href="https://wa.me/233244000000?text=Hello%20Ama%2C%20I%20have%20a%20plant%20question."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-describedby="whatsapp-hint"
+              >Chat with Ama on WhatsApp</a
+            >
+            <p id="whatsapp-hint" class="hint">
+              You can send a photo of your plant too.
+            </p>
+            <a class="btn btn-outline" href="tel:+233244000000"
+              >Or call Ama on 0244 000 000</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- 6. Slim footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>14 Okaishie Lane, Accra</p>
+        <p>&copy; 2026 Ama's Plant Corner. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
