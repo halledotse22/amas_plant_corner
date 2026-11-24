@@ -79,8 +79,6 @@ My partner's audit found no confirmed WCAG failures and two functional problems.
 
 **Result:** All of these tests passed.
 
-**Justification:** This improvement goes beyond the two findings in my partner's audit. It addresses the brightness of the page for a user group whose needs were not considered in that audit.
-
 ## Additional testing
 
 After the changes, I rechecked the ten things My partner found working, to make sure my fixes did not break them:
