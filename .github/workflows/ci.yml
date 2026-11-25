@@ -1,0 +1,39 @@
+name: Website CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check HTML and CSS formatting
+        run: npx --yes prettier@3 --check "*.{html,css}"
+
+      - name: Validate HTML
+        run: |
+          cat > "$RUNNER_TEMP/htmlvalidate.json" <<'EOF'
+          {
+            "extends": ["html-validate:recommended"],
+            "rules": {
+              "doctype-style": "off",
+              "void-style": ["error", { "style": "selfclose" }],
+              "tel-non-breaking": "off"
+            }
+          }
+          EOF
+          npx --yes html-validate@11 -c "$RUNNER_TEMP/htmlvalidate.json" index.html
