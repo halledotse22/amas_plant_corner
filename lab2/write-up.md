@@ -86,7 +86,7 @@ After the changes, I rechecked the ten things My partner found working, to make 
 - **Keyboard access and visible focus:** Every control can be reached with Tab and every stop shows an outline.
 - **Product information:** All 5 photos have descriptive alt text and the headings run in order.
 - **Care guides:** Enter opens a guide and Enter closes it.
-- **Zoom:** No sideways scroll at 200% zoom, and a single column at 400% zoom (320px wide).
+- **Zoom:** No sideways scroll at 200% zoom.
 - **Target sizes:** The smallest control is the Menu icon at 48 × 48px, twice the 24px minimum.
 - **Focus not hidden by the sticky top bar:** I tabbed through every stop at 390px wide, and at 375 × 667 with text at 200%. No focused item sits under the bar.
 - **Form labels and native validation:** No longer applies, because the form was removed (Finding 1).
