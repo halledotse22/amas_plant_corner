@@ -40,6 +40,24 @@
   <body id="top">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
+    <!-- Seasonal promotion: hidden until promotions.js finds one running today.
+         Promotions and their dates are listed in promotions.js. -->
+    <aside
+      id="promo-banner"
+      class="promo-banner"
+      aria-label="Seasonal promotion"
+      hidden
+    >
+      <div class="container">
+        <p>
+          <strong class="promo-title"></strong>
+          <span class="promo-text"></span>
+        </p>
+      </div>
+    </aside>
+    <!-- Loaded straight after the banner, so it appears before the rest of the page is drawn and nothing jumps down -->
+    <script src="promotions.js"></script>
+
     <!-- "Dim this page": a tick box that switches the page to dark colours. -->
     <aside class="dim-switch" aria-label="Display options">
       <div class="container">

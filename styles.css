@@ -228,6 +228,25 @@ img {
   color: var(--soil);
 }
 
+/* ---------- 0. Seasonal promotion banner ----------
+   Terracotta, the colour already used for prices, so it reads as an offer.
+   It is not sticky: it scrolls away, so it never covers content at large text sizes. */
+.promo-banner {
+  background-color: var(--terracotta);
+  color: var(--linen);
+  padding-block: var(--space-3);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.promo-banner p {
+  margin-inline: auto; /* centres the line-length limit that all paragraphs have */
+}
+
+.promo-title {
+  font-weight: 600;
+}
+
 /* ---------- 1. Top bar ---------- */
 .site-header {
   position: sticky;
