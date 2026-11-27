@@ -41,3 +41,8 @@ jobs:
           }
           EOF
           npx --yes html-validate@11 -c "$RUNNER_TEMP/htmlvalidate.json" index.html
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint JavaScript
+        run: npm run lint
