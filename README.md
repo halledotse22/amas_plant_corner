@@ -7,9 +7,13 @@ A rebuild of the website for Ama's Plant Corner, a small plant shop at 14 Okaish
 ## How to view it
 
 - **Online:** open the live site link above.
-- **On your computer:** download or clone the repository and open `index.html` in a browser. There is no build step, no JavaScript and nothing to install.
+- **On your computer:** download or clone the repository and open `index.html` in a browser. There is no build step and nothing to install.
 
-The page uses only HTML and CSS. The care guides and the phone menu open and close using built-in HTML and CSS features. 
+The page is built with HTML and CSS. The care guides and the phone menu open and close using built-in HTML and CSS features. One small script, `promotions.js`, shows the seasonal promotion banner; if JavaScript is off, the page works the same without the banner.
+
+## Updating seasonal promotions
+
+The banner at the top of the page shows whichever promotion is running today. Promotions are listed in `promotions.js`. To add one, copy an entry, change the title, text and dates (written `year-month-day`), and open a pull request. The banner appears on the start date and disappears after the end date by itself, so old promotions never need removing by hand. When no promotion is running, the banner is hidden.
 
 ## Before launch
 
@@ -38,6 +42,7 @@ The page uses only HTML and CSS. The care guides and the phone menu open and clo
 ```
 index.html          the page
 styles.css          all styles: design tokens at the top, phone styles, one 768px breakpoint, then the dark colours
+promotions.js       the list of seasonal promotions and the script that shows the current one
 images/             five photos, each 900 × 491 pixels
 evidence/           screenshots and Lighthouse report for my audit of my partner's site
 lab1/               Lab 1: building the page
