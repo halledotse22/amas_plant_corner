@@ -2,7 +2,6 @@
   "name": "amas_plant_corner",
   "version": "1.0.0",
   "description": "**Live site:** [https://halledotse22.github.io/amas_plant_corner/](https://halledotse22.github.io/amas_plant_corner/)",
-  "main": "eslint.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
